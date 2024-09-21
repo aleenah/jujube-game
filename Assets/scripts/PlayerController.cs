@@ -1,12 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
-public class NewBehaviourScript : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     Rigidbody2D rb;
     Vector2 move;
     bool jump = false;
+
+    int score = 0;
+    public TMP_Text scoreText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +45,8 @@ public class NewBehaviourScript : MonoBehaviour
     {
         if (collision.CompareTag("olive"))
         {
+            score++;
+            scoreText.text = "Score: " + score.ToString();
             Destroy(collision.gameObject);
         }
     }
